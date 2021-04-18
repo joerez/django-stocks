@@ -3,6 +3,24 @@
 
 <h1>Hello world!</h1>
 
-{{ api }}
+
+{% if api %}
+
+    {% if api == "Error..." %}
+        There was an issue with your ticker symbol, please try again.
+
+    {% else %}
+        {% for key, value in api.items %}
+            {{key}}: {{value}}<br />
+        {% endfor %}
+    {% endif %}
+
+{% else %}
+
+
+
+{% endif %}
+
+
 
 {% endblock %}
