@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Hello world!</h1>
-
+{% if ticker %}
+    <h1>{{ ticker }}</h1>
+{% endif %}
 
 {% if api %}
 
@@ -10,9 +11,16 @@
         There was an issue with your ticker symbol, please try again.
 
     {% else %}
-        {% for key, value in api.items %}
-            {{key}}: {{value}}<br />
-        {% endfor %}
+
+        <h1>{{ api.companyName }}</h1> <br />
+        Price: ${{ api.latestPrice }} <br />
+        Previous Close: ${{ api.previousClose }} <br />
+        Market Cap: ${{ api.marketCap }} <br />
+        YTD Change: {{ api.ytdChange }} <br />
+        52WK High: {{ api.week52High }} <br />
+        52WK Low: {{ api.week52Low }} <br />
+
+
     {% endif %}
 
 {% else %}
